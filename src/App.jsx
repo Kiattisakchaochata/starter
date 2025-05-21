@@ -1,14 +1,19 @@
+import { useState } from "react";
+import LoginForm from "./components/loginForm";
+import SignupForm from "./components/SignupForm";
 
-
-function App() {
-  
+export default function App() {
+  const [showSignup, setShowSignup] = useState(false);
 
   return (
-   <div className="app">
-    <h1 className="text-3xl text-amber-300">Codecamp20</h1>
-    <button className="btn btn-primary">Ok</button>
-   </div>
-  )
+    <div className="p-10">
+      <button
+        onClick={() => setShowSignup(!showSignup)}
+        className="mb-6 bg-gray-300 px-4 py-2 rounded"
+      >
+        {showSignup ? "กลับไป Login" : "ไปหน้า Signup"}
+      </button>
+      {showSignup ? <SignupForm /> : <LoginForm />}
+    </div>
+  );
 }
-
-export default App
